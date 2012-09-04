@@ -1,4 +1,4 @@
-// <!-- one.createPublic new-link-dialog-js-0.0.2 -->
+// <!-- one.upload https://u1.linnk.it/qc8sbw/usr/apps/textsync/docs/new-link-dialog-js-0.0.2 -->
 
 (function($, AJ) {
 

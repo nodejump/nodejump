@@ -1,4 +1,4 @@
-// <!-- one.createPublic nodejump-app-0.0.2 -->
+// <!-- one.upload https://u1.linnk.it/qc8sbw/usr/apps/textsync/docs/nodejump-app-0.0.2 -->
 
 // node jump application module
 (function($, AJ) {
