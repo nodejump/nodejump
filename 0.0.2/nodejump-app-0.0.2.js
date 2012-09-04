@@ -61,34 +61,52 @@
 			nj.insertLinkDialog = $.initNewLinkDialog($('.insertLinkDialog',
 					elem), client);
 
-			nj.edit = $.initAjEdit($(".editorContent", elem), client);
-
-			nj.edit.setEditorFactory(function() {
-				$(".editorContent", elem).show(); // to assure codemirror is
-				// rendered
-				// correctly.
-
-				var editorElem = $(".textArea", elem).get(0);
-				if (!editorElem) {
-					throw "Editor element is not defined: " + elem
-							+ ".textArea";
-				}
-
-				var editor = CodeMirror.fromTextArea(editorElem, {
-					// mode: 'markdown',
-					lineNumbers : true,
-					matchBrackets : true,
-					theme : "default",
-					indentWithTabs : true,
-					lineWrapping : true,
-					onChange : function(editor, changeParams) {
-						if (!$('.editStatus', elem).html() === "Loading") {
-							$(".editStatus", elem).html("Unsaved");
+			nj.edit = $.initAjEdit({
+				elem : $(".editorContent", elem),
+				client : client,
+				textChangeListener : function() {
+					nj.view.load(nj.loadedNode.url(), nj.secret, {
+						onSuccess : function() {
+						},
+						onFailure : function(ex) {
+							Aj.ui.notify(
+									"Unexpected exception while loading node: "
+											+ ex, "alert-error");
 						}
-					}
-				});
+					});
 
-				return editor;
+				},
+				nodeChangeListener : function() {
+
+				},
+				editorFactory : function() {
+					$(".editorContent", elem).show(); // to assure codemirror
+					// is
+					// rendered
+					// correctly.
+
+					var editorElem = $(".textArea", elem).get(0);
+					if (!editorElem) {
+						throw "Editor element is not defined: " + elem
+								+ ".textArea";
+					}
+
+					var editor = CodeMirror.fromTextArea(editorElem, {
+						// mode: 'markdown',
+						lineNumbers : true,
+						matchBrackets : true,
+						theme : "default",
+						indentWithTabs : true,
+						lineWrapping : true,
+						onChange : function(editor, changeParams) {
+							if (!$('.editStatus', elem).html() === "Loading") {
+								$(".editStatus", elem).html("Unsaved");
+							}
+						}
+					});
+
+					return editor;
+				}
 			});
 
 			nj.view = $.initAjView({
@@ -106,19 +124,6 @@
 
 					});
 				}
-			});
-
-			nj.edit.setTextChangeListener(function() {
-				nj.view.load(nj.loadedNode.url(), nj.secret, {
-					onSuccess : function() {
-					},
-					onFailure : function(ex) {
-						Aj.ui.notify(
-								"Unexpected exception while loading node: "
-										+ ex, "alert-error");
-					}
-				});
-
 			});
 
 			$(".insertLinkButton", elem).click(
@@ -218,7 +223,7 @@
 			if (!secret) {
 				secret = AJ.userNodeSecret;
 			}
-			
+
 			$(".currentUrl", elem).html(
 					"<a style='color: #909090;' href='" + node.url() + "' >"
 							+ node.url() + "</a>");
@@ -309,7 +314,7 @@
 			if (nj.loadedNode) {
 				$(".editStatus", elem).html("Synchronizing");
 				nj.edit.commitOrReload(function(wasChanged) {
-					
+
 					$(".editStatus", elem).html("Saved");
 				});
 			}
