@@ -77,7 +77,7 @@
 
 				},
 				nodeChangeListener : function() {
-
+					
 				},
 				editorFactory : function() {
 					$(".editorContent", elem).show(); // to assure codemirror
@@ -117,7 +117,7 @@
 
 				},
 				nodeChangeListener : function(client, node, secret) {
-
+					
 				},
 				viewHandler : function(client, node, secret) {
 					nj.load(node, secret, function() {
