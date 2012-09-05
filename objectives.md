@@ -91,6 +91,15 @@ This document outlines the directions for the nodejump application.
 
 ## DONE
 
+### 0.0.2
+
+- 3/fix/nodejump: try to reenable background updates
+ - try to avoid that clicking on link when 'synchronizing' will only open the link after synchronization has beeen completed
+ - Done 5/9/2012
+
+- 2/fix/nodejump+edit+view: bugfix and wire new versions in snapshot
+ - Done 5/9/2012
+
 ### 0.0.1
 
 - admin: set up github project and dev environment.
