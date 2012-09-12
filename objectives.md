@@ -6,6 +6,15 @@ This document outlines the directions for the nodejump application.
 
 ## I Want
 
+- 1/enh/nodejump: upon insert link with nothing selected, put focus on enter link text input
+ - also fix that when a text range is selected only first word is linked
+
+- 3+/enh/nodejump - whenever there is a from defined, the rendered page (view) shall update the value (in a child node of the ducument associated to this child automatically upon every change
+ - Maybe use HTML input first?
+
+- 2/fix/nodejump: bad performance seems to come from local auto-commit processes / improve
+
+
 - 1/fix/nodejump: Show error message, when no authorization for node
  - suggest that user logs in and reloads page
 
@@ -29,6 +38,12 @@ This document outlines the directions for the nodejump application.
 - 1/fix/nodejump: reduce impact of background synchronization on performance.
  - the synchronization sometimes seems to hang a little bit. Even if this is not problematic, since its happening in the background, it can make the app a bit sluggish, since a change of nodes, only occurs when background sync is done.
 
+- fix/nodejump: if the hash gives a node uri ending with '/' links to subpages are not rendered correctly.
+
+- comm/nodejump: List what is nodejump good for
+ - Documentation
+ - Research Notes
+ - Project Notes
 
 ## Quick Win
 
