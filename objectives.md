@@ -6,18 +6,18 @@ This document outlines the directions for the nodejump application.
 
 ## I Want
 
-- 1/enh/nodejump: upon insert link with nothing selected, put focus on enter link text input
- - also fix that when a text range is selected only first word is linked
 
-- 3+/enh/nodejump - whenever there is a from defined, the rendered page (view) shall update the value (in a child node of the ducument associated to this child automatically upon every change
- - Maybe use HTML input first?
+-----
+
+**Cluster performance/background sync***
 
 - 2/fix/nodejump: bad performance seems to come from local auto-commit processes / improve
 
+- 3/enh/nodejump: explore how performance can be increased even more
 
-- 1/fix/nodejump: Show error message, when no authorization for node
- - suggest that user logs in and reloads page
-
+- 1/fix/nodejump: reduce impact of background synchronization on performance.
+ - the synchronization sometimes seems to hang a little bit. Even if this is not problematic, since its happening in the background, it can make the app a bit sluggish, since a change of nodes, only occurs when background sync is done.
+ 
 - 3/fix/edit+nodejump: fix various issues
  - somtimes the last few characters entered are removed by the background update process
   - same behaviour in nodejump!!
@@ -25,20 +25,18 @@ This document outlines the directions for the nodejump application.
   - also make this feature available for nodejump
  - fix that sometimes hash seems not  be updated correctly (when going from view to edit?)
  - dupl 1/fix/nodejump: Investigate why editor is 'eating' nodes sometimes
-  - it seems to occur when synchronization is slow (or maybe multiple syncs started at the same time?) 
+  - it seems to occur when synchronization is slow (or maybe multiple syncs started at the same time?)
 
-- 3/enh/nodejump: explore how performance can be increased even more
+----
 
-- 3/comm/nodejump: prepare version 0.0.1
+- 1/fix/nodejump: Show error message, when no authorization for node
+ - suggest that user logs in and reloads page
+ 
 
 - 2/enh/nodejump: Make a 'fixed toolbar', which always stays on top of the page
  - including the <button>Insert Link</button> and <button>Share</button>
  - maybe also add forward and back button, especially for full screen editing.
 
-- 1/fix/nodejump: reduce impact of background synchronization on performance.
- - the synchronization sometimes seems to hang a little bit. Even if this is not problematic, since its happening in the background, it can make the app a bit sluggish, since a change of nodes, only occurs when background sync is done.
-
-- fix/nodejump: if the hash gives a node uri ending with '/' links to subpages are not rendered correctly.
 
 - comm/nodejump: List what is nodejump good for
  - Documentation
@@ -55,6 +53,10 @@ This document outlines the directions for the nodejump application.
 
 
 ## Maybe
+
+- 3+/enh/nodejump - whenever there is a from defined, the rendered page (view) shall update the value (in a child node of the ducument associated to this child automatically upon every change
+ - Maybe use HTML input first?
+
 
 - 3/enh/nodejump+aj-edit: implement and editor for Integers
  - also for float?
@@ -117,6 +119,7 @@ This document outlines the directions for the nodejump application.
 
 ### 0.0.1
 
+- 3/comm/nodejump: prepare version 0.0.1
 - admin: set up github project and dev environment.
 - enh: implement markdown node editor with markdown preview
 - enh: improve speed, in which Markdown preview is updated!
