@@ -139,9 +139,13 @@
 						var somethingSelected = selection
 								&& selection.length > 0;
 
-						if (somethingSelected && selection.length < 20) {
-							nj.priv.createAndInsertChildDocument(codemirror
-									.getSelection(),
+						if (somethingSelected ) {
+							var safeSelection = selection;
+							if (safeSelection.length > 45) {
+								safeSelection = selection.substring(0, 44);
+							}
+							
+							nj.priv.createAndInsertChildDocument(safeSelection,
 									codemirror.getCursor(true), codemirror
 											.getCursor(false));
 							return;
