@@ -20,9 +20,10 @@
 			nld.node = params.node;
 			nld.secret = params.secret;
 
-			$(".insertLinkDialog-title", elem).val("");
-
+			
 			nld.dialog.show();
+			$(".insertLinkDialog-title", elem).val("");
+			$('.insertLinkDialog-title', elem).focus();
 		};
 
 		nld.hide = function() {
