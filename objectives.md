@@ -116,6 +116,14 @@ This document outlines the directions for the nodejump application.
 
 - 2/fix/nodejump+edit+view: bugfix and wire new versions in snapshot
  - Done 5/9/2012
+ 
+- 1/enh/nodejump: upon insert link with nothing selected, put focus on enter link text input
+ - also fix that when a text range is selected only first word is linked
+ - DONE 17/9/2012
+
+- 1/enh/increase startup speed
+ - worked on this for about [3] bur unsure whether stratup speed has been improved significantly
+ - DONE 14/9/2012
 
 ### 0.0.1
 
