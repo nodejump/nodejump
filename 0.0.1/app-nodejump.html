@@ -1,8 +1,737 @@
+<!-- one.upload https://u1.linnk.it/qc8sbw/usr/apps/ajMicroSync/docs/app-nodejump -->
+<!DOCTYPE html>
 
-// <!-- one.upload https://u1.linnk.it/qc8sbw/usr/apps/textsync/docs/nodejump-jsbundle-rendered-0.0.1 -->
+<html lang="en">
+<head>
+<title>nodejump</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="http://appjangle.com/assets/v02/bootstrap-2.1.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="http://appjangle.com/assets/v02/bootstrap-2.1.0/css/bootstrap-responsive.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="http://appjangle.com/assets/v02/codemirror-2.32/codemirror.css">
+
+<!-- <link rel="stylesheet"
+	href="http://layout.jquery-dev.net/lib/css/layout-default.css"> -->
+
+<style>
+body {
+	background-image: url('http://u1.linnk.it/assets/v01/img/beige3.png');
+}
+
+a.disabled-link,a.disabled-link:visited,a.disabled-link:active,a.disabled-link:hover
+	{
+	background-color: #d9d9d9 !important;
+	color: #aaa !important;
+}
+
+.CodeMirror {
+	font-size: 12pt;
+}
+
+.CodeMirror-scroll {
+	height: auto;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+
+/* for footer */
+.wrapper,.footer,.push {
+	margin: 0;
+}
+
+html,body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px 0;
+}
+
+.footer,.push {
+	height: 60px;
+}
+/* footer end */
+</style>
+
+
+</head>
+<body>
+
+	<div class="wrapper">
+
+		<div class="container-fluid">
+			<div id="ajnavbar">
+				
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="http://appjangle.com/"> <img
+				src="http://u1.linnk.it/0fs7dr/Apps1/appjangle/aj_logo_small.value.png" />
+			</a> <a class="btn btn-navbar collapsed" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a>
+
+			<ul class="navbar-wait nav pull-right">
+				<li>Loading Engine ...
+					<div class="progress progress-striped active">
+						<div class="bar" style="width: 100%;"></div>
+					</div>
+				</li>
+
+			</ul>
+
+
+			<div class="nav-collapse collapse">
+
+				<ul class="nav">
+					<li><a
+						href="http://u1.linnk.it/qc8sbw/usr/apps/ajMicroSync/docs/app-previewnotice.value.html"><span
+							style="font-size: 20px;">PREVIEW</span></a></li>
+					<li class="divider-vertical"></li>
+
+					<li><a href="http://appjangle.com/">Home</a></li>
+					<li><a href="http://appjangle.com/apps">Apps</a></li>
+				</ul>
+
+				<div class="navbar-signin navbar-search pull-right"
+					style="display: none;">
+					<input type="text"
+						class="appjangle-useremail-input search-query span2"
+						placeholder="Email"> <input type="password"
+						class="appjangle-userpassword-input search-query span2"
+						placeholder="Password">
+					<button class="appjangle-signin-button btn btn-inverse">Sign
+						in</button>
+				</div>
+
+				<ul class="navbar-signout nav pull-right" style="display: none;">
+					<li><p class="navbar-text">
+							Logged in as <span class="appjangle-userEmail">undefined</span>.
+							<a id="appjangle-settings" href="http://appjangle.com/settings">Settings</a>
+							<a href="#" class="appjangle-signout-button">Sign out</a>
+						</p></li>
+
+				</ul>
+
+			</div>
 
 
 
+		</div>
+	</div>
+</div>
+
+			</div>
+
+			<div id="ajnotificationbar" style="display: none;">
+				
+<div class="notificationBar row-fluid" style="display: none;">
+	<div class="span12">
+		<div class="notificationMessage alert alert-success">
+			<button class="close" data-dismiss="alert">x</button>
+			<div class="notificationText"></div>
+		</div>
+	</div>
+</div>
+
+			</div>
+
+			<div id="ajprogressbar" style="display: none;">
+				<div class="row-fluid">
+					<div class="span12">
+						
+
+<div class="progressBar" style="display: none;">
+<div class="progress progress-striped
+     active">
+	<div class="bar" style="width: 100%;"></div>
+</div>
+</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div id="ajstatusbar" style="display: none;">
+				<div class="row-fluid">
+					<div class="span12">
+						
+
+<div class="statusBar" style="display: none">
+	<p class="statusText"></p>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row-fluid">
+				<div class="span12">
+					<div id="nodejumpapp">
+
+
+
+						<div class="shareDialog">
+							
+
+
+<div class="shareUiDialog dialog" style="display: none;">
+	<div class="modal-header">
+		<button type="button" class="close closeButton">&times;</button>
+		<h3>Share</h3>
+	</div>
+	<div class="shareUiBody modal-body" style="max-height: 2000px;">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<p>You have the following options to share this content:</p>
+				</div>
+			</div>
+
+			<div class="publishComponent row-fluid">
+				<div class="span12">
+					<h3>Publish</h3>
+					<p>Publishing the document will make it available on the web
+						and for search engines.</p>
+					<button class="publishButton btn btn-primary">Publish Now</button>
+				</div>
+			</div>
+
+			
+
+			<div class="row-fluid">
+				<div class="span6">
+					<h3>Edit Link</h3>
+					<p>The 'edit' link of this document will allow anyone with the
+						link to view and change your document.</p>
+
+					<button class="generateEditLinkButton btn btn-success">Generated
+						Edit Link</button>
+
+				</div>
+				<div class="span6">
+					<h3>View Link</h3>
+					<p>The 'view' link of this document will allow anyone you send
+						the link to view your document (even if it is not published).</p>
+
+					<button class="generateViewLinkButton btn btn-success">Generate
+						View Link</button>
+
+				</div>
+			</div>
+
+
+			<div class="linkDisplay row-fluid"
+				style="display: none; margin-top: 20px;">
+
+				<div class="span12">
+					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<p>The generated link is:</p>
+						<p>
+							<span class="generatedLink"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="publishedComponent row-fluid" style="display: none;">
+				<div class="span12" style="margin-top: 12px;">
+					<p>
+						Your document is published at the address: <span
+							class="publishedAddress"></span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="closeButton btn">Close</a>
+		<!-- <a href="#"
+					class="btn btn-primary">Save changes</a> -->
+	</div>
+</div>
+
+
+						</div>
+
+						<div class="insertLinkDialog">
+							
+
+<div class="insertLinkDialog dialog" style="display: none;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">&times;</button>
+		<h3>Insert Link to New Document</h3>
+	</div>
+	<div class="modal-body" style="max-height: 2000px;">
+		<form>
+			<!-- <legend>Specify the title of the new document to be
+									linked here.</legend> -->
+			<label>Title of new document</label> <input
+				class="insertLinkDialog-title" type="text"
+				placeholder="Title ...">
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="insertLinkDialog-cancel btn">Cancel</a> <a
+			href="#" class="insertLinkDialog-createDocument btn btn-primary">Create
+			Document</a>
+	</div>
+</div>
+
+						</div>
+
+
+
+						<div class="row-fluid">
+
+							<div class="span6">
+								<div class="row-fluid">
+									<div class="span12">
+										<div class="btn-toolbar">
+											<div class="btn-group">
+												<button class="insertLinkButton btn btn-inverse">Insert
+													Link</button>
+												<button class="btn btn-inverse dropdown-toggle"
+													data-toggle="dropdown">
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a class="insertLinkButton" href="#">To New
+															Page</a></li>
+													<!-- <li><a href="#">As Hyperlink</a></li> -->
+
+												</ul>
+
+											</div>
+
+										</div>
+									</div>
+
+
+								</div>
+
+								<div class="row-fluid">
+
+									<div class="span12" style="border-right: 1px solid #E0E0E0;">
+										<div class="editor">
+
+											<!-- <div class="border row-fluid">
+									<div class="span12"><small>Edit</small></div>
+								</div>  -->
+											<div class="row-fluid">
+												<div class="editorContent" style="display: none">
+													<textarea class="textArea"></textarea>
+												</div>
+												<div style="margin-left: 30px;">
+													<span class="editStatus"
+														style="font-size: 8pt; color: #909090;">Loading</span>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<div class="span6" style="font-size: 8pt; color: #909090;">
+												<table>
+													<tr style="vertical-align: bottom;">
+														<td><span class="viewStatus">Loading</span></td>
+														<td><span class="currentUrl hidden-phone"
+															style="color: #E0E0E0;"> <a href="#"></a>
+														</span></td>
+														<td><i class="shareComponent icon-arrow-right"
+															style="display: none; opacity: 0.3; filter: alpha(opacity =                           30);"></i></td>
+														<td><a class="shareComponent shareButton" href="#"
+															style="display: none; color: #909090;">Share</a></td>
+													</tr>
+												</table>
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row-fluid">
+									<div class="span12" style="border-top: 1px solid #E0E0E0;">
+										<div class="browser">
+
+											<div class="row-fluid">
+												<div class="viewComponent">
+													<div class="viewContent"></div>
+													<!-- <div class="viewChildren row-fluid">
+
+											<div class="span12">
+												<hr />
+												<div class="childrenList collapse">
+													<ul class="childrenItems nav nav-tabs nav-stacked">
+														
+													</ul>
+												</div>
+
+
+
+												<button class="toggleChildrenButton btn btn-info btn-mini">
+													<i class="icon-plus icon-white"></i> Show Children
+												</button>
+
+											</div>
+
+										</div> -->
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+
+				</div>
+
+
+
+			</div>
+
+
+		</div>
+		<div class="push"></div>
+	</div>
+
+	<div class='footer'>
+		<div id="helpbar">
+			
+
+<div class="container-fluid">
+	
+	
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="tabbable">
+
+				<div class="hidden-phone">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#help-tab1" class="noHelpButton"
+							data-toggle="tab" style="color: #282828;">Hide Help</a></li>
+						<li><a href="#help-formatting-tab"
+							class="formattingReferenceButton" data-toggle="tab"
+							style="color: #282828;">Formatting</a></li>
+						<li><a href="#help-linking-and-navigation-tab"
+							class="linkingAndNavigationReferenceButton" data-toggle="tab"
+							style="color: #282828;">Linking and Navigation</a></li>
+						<li><a href="#help-sharing-tab"
+							class="sharingReferenceButton" data-toggle="tab"
+							style="color: #282828;">Sharing</a></li>
+					</ul>
+				</div>
+
+
+				<div class="phoneHelpMenu visible-phone">
+					<div class="btn-group">
+						<a class="btn noHelpButton hideHelpButton" data-toggle="tab"
+							href="#help-tab1" style="display: none;"> Hide Help </a> <a
+							class="btn formattingReferenceButton" data-toggle="tab"
+							href="#help-formatting-tab"> Formatting </a> <a
+							class="btn linkingAndNavigationReferenceButton" data-toggle="tab"
+							href="#help-linking-and-navigation-tab"> Linking/Nav </a> <a
+							class="btn sharingReferenceButton" data-toggle="tab"
+							href="#help-sharing-tab"> Sharing </a>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="tab-content">
+				<div class="tab-pane active" id="help-tab1"></div>
+
+				<div class="tab-pane" id="help-formatting-tab">
+					
+						<div class="row-fluid">
+
+							<div class="span6">
+								<h4>Basic Formatting</h4>
+								<p>
+									You can use a number of special characters such as
+									<code>#</code>
+									,
+									<code>*</code>
+									and
+									<code>[]</code>
+									to add formatting to your documents.
+								</p>
+								<p>
+									The <span class="hidden-phone">list to the right <i
+										class="icon-arrow-right"></i></span> <span class="visible-phone">list
+										below</span> shows examples of things you can write in the editor and
+									how they will be formatted in the preview and for deployed web
+									pages.
+								</p>
+								<p>
+									For more infos, check the <a
+										href="http://daringfireball.net/projects/markdown/basics">Markdown
+										Documentation</a>
+								</p>
+								<h4>Advanced Formatting</h4>
+								<p>For more formatting options, you can also add arbitrary
+									HTML to your documents.</p>
+								<p>
+									In particular, you can utilize the powerful formatting/layout
+									options provided by <a
+										href="http://twitter.github.com/bootstrap/base-css.html">Twitter
+										Bootstrap</a>.
+								</p>
+								<p>For instance:</p>
+								<table class="table table-condensed table-hover table-bordered">
+									<tr>
+										<td>You Write:</td>
+										<td><code>All Good &lt;i
+												class=&quot;icon-thumbs-up&quot;&gt;&lt;/i&gt;</code></td>
+									</tr>
+									<tr>
+										<td>Result:</td>
+										<td>All Good <i class="icon-thumbs-up"></i></td>
+									</tr>
+								</table>
+
+							</div>
+
+							<div class="span6">
+								<table class="table table-condensed table-hover table-bordered">
+									<tr>
+										<th>You Write</th>
+										<th>Result</th>
+									</tr>
+									<tr>
+										<td><code># Big Header</code></td>
+										<td><span style="font-size: 110%"><b>Big
+													Header</b></span></td>
+									</tr>
+									<tr>
+										<td><code>## Small Header</code></td>
+										<td><span style="font-size: 90%"><b>Small
+													Header</b></span></td>
+									</tr>
+									<tr>
+										<td><code>_in italics_</code></td>
+										<td><em>in italics</em></td>
+									</tr>
+									<tr>
+										<td><code>**in bold**</code></td>
+										<td><b>in bold</b></td>
+									</tr>
+									<tr>
+										<td><code>[link](http://google.com)</code></td>
+										<td><a href="http://www.google.com">link</a></td>
+									</tr>
+									<tr>
+										<td><code>- a list</code></td>
+										<td><ul>
+												<li>a list</li>
+											</ul>
+									</tr>
+									<tr>
+										<td><code>1. numbered list</code></td>
+										<td><ol>
+												<li>numbered list</li>
+											</ol>
+									</tr>
+									<tr>
+										<td><code>![image](imagelink.png)</code></td>
+										<td><img
+											src="http://docs.google.com/drawings/pub?id=1WW3K33bpfZMlgW4lGb0uEvy4oUW2GijX26253MTCZlY&w=35" /></td>
+									</tr>
+									<tr>
+										<td><code>`code`</code></td>
+										<td><code>code</code></td>
+									</tr>
+									<tr>
+										<td><code>> blockquote</code></td>
+										<td><blockquote>
+												<p>blockquote</p>
+											</blockquote></td>
+									</tr>
+									<tr>
+										<td><code>&lt;b&gt;any html&lt;/b&gt;</code></td>
+										<td><b>any html</b></td>
+									</tr>
+								</table>
+
+							</div>
+
+
+						</div>
+					
+				</div>
+
+				<div class="tab-pane" id="help-linking-and-navigation-tab">
+					
+						<div class="row-fluid">
+							<div class="span6">
+								<h4>Linking</h4>
+								<p>
+									The prime purpose of nodejump is not to write <em>one</em> web
+									page but rather to create a number of <em>interconnected</em>
+									pages at a rapid pace.
+								</p>
+								<p>There are numerous ways to create new pages and links
+									between existing pages.</p>
+
+								<h5>Insert Link to New Page</h5>
+								<p>
+									Just click the
+									<button class="btn btn-small btn-inverse">Insert Link</button>
+									button to insert a link to a new document at the current cursor
+									position.
+								</p>
+
+
+								<h5>Insert Link to Existing Page</h5>
+								<p>In order to insert a link to an existing page, you must
+									first get the address of the page you want to link to.</p>
+								<p>The address of each page is displayed on top of the
+									document preview. You can right click this link and copy the
+									link address to obtain a link.</p>
+								<img class="img-rounded"
+									src="http://docs.google.com/drawings/pub?id=1i-B63A0cyMf9wVrwG38T9-Sl98kN6uxQ4y22qtFhqow&w=448">
+								<p>You can then insert the obtained link using either
+									Markdown formatting or plain HTML:</p>
+								<p>
+									<code>[my link](http://your-link-here.com)</code>
+								</p>
+								<p>
+									<code>&lt;a
+										href=&quot;http://your-link-here.com&quot;&gt;my
+										link&lt;/a&gt;</code>
+								</p>
+							</div>
+							<div class="span6">
+								<h4>Navigation</h4>
+								<p>
+									To jump from one document to another, just <em>click on
+										the links shown in the document preview</em>.
+								<p>
+								<p>Otherwise, you can use the browser navigation buttons
+									like on any other webpage. So clicking the back button will
+									bring you back to the last documents you have visited.</p>
+								<p>You can also use your browsers history, favourites and
+									bookmarks as convenient ways to access your documents.</p>
+								<p>Lastly, if you are logged in, all your documents will be
+									saved in your user node. Open the settings to see your user
+									node and all documents and data stored under your node.</p>
+
+
+							</div>
+						</div>
+					
+				</div>
+
+				<div class="tab-pane" id="help-sharing-tab">
+					
+						<div class="row-fluid">
+							<div class="span6">
+								<h4>Publish to the Web</h4>
+								<p>If you are logged in with your appjangle account, your
+									documents will by default be created as private documents (as
+									long as they are not created as children of an already
+									published document).</p>
+								<p>
+									You can click on the <a href="#" class="shareButton"
+										style="color: #909090;">share</a> link on top of the document
+									preview and click on
+									<button class="btn btn-small btn-primary">Publish Now</button>
+									to make your document available for the public web.
+								</p>
+								<p>If you are not logged in, all your documents will be
+									created as public by default.</p>
+							</div>
+							<div class="span6">
+								<h4>Share by Link</h4>
+								<p>You can generate unique links for your documents, which
+									will allow to edit and/or view the document and all of its
+									children.</p>
+								<p>
+									Just click on the <a href="#" class="shareButton"
+										style="color: #909090;">share</a> link on top of the document
+									preview and select the respective function in the share dialog.
+								</p>
+
+							</div>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript" language="javascript"
+		src="http://appjangle.com/js/v01/onejs/onejs.nocache.js"></script>
+
+	<script
+		src="http://appjangle.com/assets/v02/codemirror-2.32/codemirror.js"></script>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<!-- <script
+		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script> -->
+
+
+	<!-- <script src="http://methvin.com/splitter/splitter.js">
+	</script> -->
+	<!-- <script
+		src="http://layout.jquery-dev.net/download/jquery.layout.min-1.2.0.js"></script> -->
+
+	<script
+		src="http://appjangle.com/assets/v02/bootstrap-2.1.0/js/bootstrap.min.js"></script>
+
+	<script
+		src="http://appjangle.com/assets/v02/jquery-hashchange-1.3/jquery.ba-hashchange.min.js"></script>
+
+	<script
+		src="http://appjangle.com/assets/v02/markdown-converter-120531/Markdown.Converter.js"> 	
+	</script>
+
+	<script>
+// 
 
 /* AJ Core API. */
 
@@ -22,6 +751,8 @@
 	AJ.navbar = null;
 	AJ.odb = null;
 	
+	
+	
 	AJ.utils.addBasicAuth = function(url, username, password) {
 		var httpEnd = url.valueOf().indexOf("//")+2;
 		
@@ -33,6 +764,8 @@
 		
 		return httpPart + authPart + resourcePart;
 	};
+	
+	
 	
 	// assure that for all other domains but aj cookies are only available in
 	// the
@@ -284,7 +1017,11 @@
 	}
 	
 
+// 	
+</script>
 
+	<script>
+// 
 
 
 (function(dest) {
@@ -440,7 +1177,11 @@
 // change location into which tools are to be injected into
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 (function($, AJ) {
@@ -751,7 +1492,11 @@
 })(jQuery, AJ);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 (function($) {
 
@@ -812,7 +1557,11 @@
 })(jQuery);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 
@@ -1018,7 +1767,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 };
 
+// 
+</script>
 
+	<script>
+// 
 
 (function(glb) {
 
@@ -1191,7 +1944,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(AJ);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 (function($) {
@@ -1270,7 +2027,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 (function($, AJ) {
@@ -1379,7 +2140,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 
 
+// 
+</script>
 
+	<script>
+// 
 
 (function($) {
 
@@ -1414,7 +2179,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 })(jQuery);
 
+// 
+</script>
 
+	<script>
+// 
 
 
 (function($) {
@@ -1454,7 +2223,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 // ---
@@ -1481,30 +2254,26 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 // -----
 // edit application component
 (function($, AJ) {
 
-	$.initAjEdit = function(params) {
+	$.initAjEdit = function(elem, client) {
 		var edit = {};
-		
-		// const
-		var elem = params.elem;
-		var client = params.client;
-		// variables, with init
-		edit.nodeChangeListener = params.nodeChangeListener;
-		edit.textChangeListener = params.textChangeListener;
-		edit.newEditorFactory = params.editorFactory;
-		
-		// variables without init
+
 		edit.client = client;
 		edit.loadedNode = null;
 		edit.nodeSecret = null;
-		
-		
+		edit.newEditorFactory = null;
+		edit.nodeChangeListener = null;
+		edit.textChangeListener = null;
 		edit.editor = null;
 		edit.monitorChangesTimer = null;
 		edit.commitedLocalChange = false;
@@ -1832,7 +2601,7 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 					edit.loadNode(edit.loadedNode.url(), edit.nodeSecret,
 							function(wasChanged) {
 								callback(wasChanged);
-							}, true);
+							}, false); // TODO change back to TRUE!!!!
 				});
 			},
 			save : function(callback) {
@@ -1874,7 +2643,12 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery, AJ);
 
 
+// 
+</script>
 
+
+	<script>
+// 
 
 
 // -------
@@ -1926,17 +2700,6 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 				}
 
 				return result;
-			},
-			assertNoSlash: function(text) {
-				if (text.length === 0) {
-					return text;
-				}
-				
-				if (text[text.length-1] === '/') {
-					return text.substring(0, text.length-1);
-				}
-				
-				return text;
 			}
 
 		};
@@ -1995,7 +2758,7 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 													viewImpl.rewireLinks();
 
-													// viewImpl.loadAhead(1);
+													viewImpl.loadAhead(1);
 
 													callback.onSuccess();
 												},
@@ -2071,7 +2834,6 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 																				elem)
 																				.html(
 																						html);
-																		viewImpl.rewireLinks();
 																	}
 
 																	var childrenList = viewImpl.utils
@@ -2080,15 +2842,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 																			.valueOf() == cachedChildrenList
 																			.valueOf())) {
 																		cachedChildrenList = childrenList;
-																		
-																		
-																		
 																		$(
 																				".childrenItems",
 																				elem)
 																				.html(
 																						childrenList);
-																		viewImpl.rewireLinks();
 																	}
 																},
 																onFailure : function(
@@ -2114,17 +2872,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			$("a", elem)
 					.each(
 							function(index, value) {
-								if ($(this).attr('rewired')) {
-									return;
-								}
-								
-								$(this).attr('rewired', 'rewired');
-								
 								var link = $(this).attr('href');
-	
+
 								if (link.indexOf('.') === 0
 										&& !(link.indexOf('..') === 0)) {
-									link = viewImpl.utils.assertNoSlash(currentNodeUrl) + link.substring(1);
+									link = currentNodeUrl + link.substring(1);
 									$(this).attr('href', link);
 								}
 
@@ -2274,11 +3026,7 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			},
 			setCurrentNodeUrl : function(url) {
 				currentNodeUrl = url;
-			},
-			setCurrentNodeSecret: function(secret) {
-				currentNodeSecret = secret;
-			},
-			rewireLinks : viewImpl.rewireLinks
+			}
 		};
 
 	};
@@ -2286,6 +3034,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 
 
+// 
+</script>
+
+	<script>
+// 
 
 
 (function($, AJ) {
@@ -2308,10 +3061,9 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			nld.node = params.node;
 			nld.secret = params.secret;
 
-			
-			nld.dialog.show();
 			$(".insertLinkDialog-title", elem).val("");
-			$('.insertLinkDialog-title', elem).focus();
+
+			nld.dialog.show();
 		};
 
 		nld.hide = function() {
@@ -2385,7 +3137,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery, AJ);
 
 
+// 
+</script>
 
+	<script>
+// 	
 
 
 // node jump application module
@@ -2449,52 +3205,34 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			nj.insertLinkDialog = $.initNewLinkDialog($('.insertLinkDialog',
 					elem), client);
 
-			nj.edit = $.initAjEdit({
-				elem : $(".editorContent", elem),
-				client : client,
-				textChangeListener : function() {
-					nj.view.load(nj.loadedNode.url(), nj.secret, {
-						onSuccess : function() {
-						},
-						onFailure : function(ex) {
-							Aj.ui.notify(
-									"Unexpected exception while loading node: "
-											+ ex, "alert-error");
-						}
-					});
+			nj.edit = $.initAjEdit($(".editorContent", elem), client);
 
-				},
-				nodeChangeListener : function() {
-					
-				},
-				editorFactory : function() {
-					$(".editorContent", elem).show(); // to assure codemirror
-					// is
-					// rendered
-					// correctly.
+			nj.edit.setEditorFactory(function() {
+				$(".editorContent", elem).show(); // to assure codemirror is
+				// rendered
+				// correctly.
 
-					var editorElem = $(".textArea", elem).get(0);
-					if (!editorElem) {
-						throw "Editor element is not defined: " + elem
-								+ ".textArea";
-					}
-
-					var editor = CodeMirror.fromTextArea(editorElem, {
-						// mode: 'markdown',
-						lineNumbers : true,
-						matchBrackets : true,
-						theme : "default",
-						indentWithTabs : true,
-						lineWrapping : true,
-						onChange : function(editor, changeParams) {
-							if (!$('.editStatus', elem).html() === "Loading") {
-								$(".editStatus", elem).html("Unsaved");
-							}
-						}
-					});
-
-					return editor;
+				var editorElem = $(".textArea", elem).get(0);
+				if (!editorElem) {
+					throw "Editor element is not defined: " + elem
+							+ ".textArea";
 				}
+
+				var editor = CodeMirror.fromTextArea(editorElem, {
+					// mode: 'markdown',
+					lineNumbers : true,
+					matchBrackets : true,
+					theme : "default",
+					indentWithTabs : true,
+					lineWrapping : true,
+					onChange : function(editor, changeParams) {
+						if (!$('.editStatus', elem).html() === "Loading") {
+							$(".editStatus", elem).html("Unsaved");
+						}
+					}
+				});
+
+				return editor;
 			});
 
 			nj.view = $.initAjView({
@@ -2505,13 +3243,26 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 
 				},
 				nodeChangeListener : function(client, node, secret) {
-					
+
 				},
 				viewHandler : function(client, node, secret) {
 					nj.load(node, secret, function() {
 
 					});
 				}
+			});
+
+			nj.edit.setTextChangeListener(function() {
+				nj.view.load(nj.loadedNode.url(), nj.secret, {
+					onSuccess : function() {
+					},
+					onFailure : function(ex) {
+						Aj.ui.notify(
+								"Unexpected exception while loading node: "
+										+ ex, "alert-error");
+					}
+				});
+
 			});
 
 			$(".insertLinkButton", elem).click(
@@ -2527,13 +3278,9 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 						var somethingSelected = selection
 								&& selection.length > 0;
 
-						if (somethingSelected ) {
-							var safeSelection = selection;
-							if (safeSelection.length > 45) {
-								safeSelection = selection.substring(0, 44);
-							}
-							
-							nj.priv.createAndInsertChildDocument(safeSelection,
+						if (somethingSelected && selection.length < 20) {
+							nj.priv.createAndInsertChildDocument(codemirror
+									.getSelection(),
 									codemirror.getCursor(true), codemirror
 											.getCursor(false));
 							return;
@@ -2615,7 +3362,7 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			if (!secret) {
 				secret = AJ.userNodeSecret;
 			}
-
+			
 			$(".currentUrl", elem).html(
 					"<a style='color: #909090;' href='" + node.url() + "' >"
 							+ node.url() + "</a>");
@@ -2706,7 +3453,7 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 			if (nj.loadedNode) {
 				$(".editStatus", elem).html("Synchronizing");
 				nj.edit.commitOrReload(function(wasChanged) {
-
+					
 					$(".editStatus", elem).html("Saved");
 				});
 			}
@@ -2917,7 +3664,11 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery, AJ);
 
 
+// 
+</script>
 
+	<script>
+// 
 
 
 // help bar module
@@ -2983,96 +3734,120 @@ AJ.auth.registerSecret = function(c, secret, p_address, onSuccess, onFailure) {
 })(jQuery);
 
 
+// 
+</script>
 
-function AJ_loginCompleted(aj, userLoggedIn) {
+	<script>
 
-	
 
-	var client = aj.createClient();
-	
-	var lastInjectedHashValue = null;
-	
-	var helpBar = $.initHelpBar($("#helpbar"));
-	
-	var nodejump = $.initNodeJumpApp({
-		elem: $("#nodejumpapp"),
-		client: client,
-		nodeChangeHandler: function(nj, node, secret) {
-			if (!nj.isAnonymousUser()) {
-				window.location.hash = "#"+node.url();
-			} else {
-				window.location.hash = "#"+node.url()+"&"+secret;
+
+	function AJ_loginCompleted(aj, userLoggedIn) {
+
+		
+
+		var client = aj.createClient();
+		
+		var lastInjectedHashValue = null;
+		
+		var helpBar = $.initHelpBar($("#helpbar"));
+		
+		var nodejump = $.initNodeJumpApp({
+			elem: $("#nodejumpapp"),
+			client: client,
+			nodeChangeHandler: function(nj, node, secret) {
+				if (!nj.isAnonymousUser()) {
+					window.location.hash = "#"+node.url();
+				} else {
+					window.location.hash = "#"+node.url()+"&"+secret;
+				}
+				lastInjectedHashValue = window.location.hash;
 			}
-			lastInjectedHashValue = window.location.hash;
-		}
-	});
-	
-	nodejump.initComponents();
-	
-	nodejump.readHash(window.location.hash, function(hadHash) {
-		if (!hadHash) {
-			
-			if (AJ.userNodeUri) {
-					nodejump.initForUser(function() {
+		});
+		
+		nodejump.initComponents();
+		
+		nodejump.readHash(window.location.hash, function(hadHash) {
+			if (!hadHash) {
+				
+				if (AJ.userNodeUri) {
+						nodejump.initForUser(function() {
+							nodejump.startAutoCommit();
+							nodejump.startAutoRefresh();
+						} );
+				} else {
+					nodejump.initForAnonymous(function() {
 						nodejump.startAutoCommit();
 						nodejump.startAutoRefresh();
-					} );
-			} else {
-				nodejump.initForAnonymous(function() {
-					nodejump.startAutoCommit();
-					nodejump.startAutoRefresh();
+					});
+				}
+				return;
+			}
+			
+			nodejump.startAutoCommit();
+			nodejump.startAutoRefresh();
+		});
+		
+			
+		
+		$(window).hashchange( function(){
+			if (!lastInjectedHashValue || !(window.location.hash.valueOf() === lastInjectedHashValue.valueOf())) {
+				
+				nodejump.readHash(window.location.hash, function(hadHash) {
+					
 				});
 			}
-			return;
-		}
+			lastInjectedHashValue = null;
+		});
 		
-		nodejump.startAutoCommit();
-		nodejump.startAutoRefresh();
-	});
-	
+		 
+		$(window).focus(function() {
+			nodejump.startAutoCommit();
+			nodejump.startAutoRefresh();
+		});
 		
-	
-	$(window).hashchange( function(){
-		if (!lastInjectedHashValue || !(window.location.hash.valueOf() === lastInjectedHashValue.valueOf())) {
-			
-			nodejump.readHash(window.location.hash, function(hadHash) {
-				
-			});
-		}
-		lastInjectedHashValue = null;
-	});
-	
-	 
-	$(window).focus(function() {
-		nodejump.startAutoCommit();
-		nodejump.startAutoRefresh();
-	});
-	
-	$(window).blur(function() {
-		nodejump.stopAutoCommit();
-		nodejump.stopAutoRefresh();
-	});
+		$(window).blur(function() {
+			nodejump.stopAutoCommit();
+			nodejump.stopAutoRefresh();
+		});
 
-	$(window).unload(function() {
-		nodejump.stopAutoCommit();
-		nodejump.stopAutoRefresh();
-	});
-	
-}
+		$(window).unload(function() {
+			nodejump.stopAutoCommit();
+			nodejump.stopAutoRefresh();
+		});
+		
+	}
 
-function AJ_engineLoaded(aj) {
+	function AJ_engineLoaded(aj) {
 
-	AJ.statusBar = $.ajInitStatusBar($("#ajstatusbar"), aj);
-	AJ.notificationBar = $.ajInitNotificationBar($("#ajnotificationbar"), aj);
-	AJ.navbar = $.ajInitNavbar($("#ajnavbar"), aj);
-	AJ.progressBar=$.ajInitProgressBar($("#ajprogressbar"));
-	
-	
-}
+		AJ.statusBar = $.ajInitStatusBar($("#ajstatusbar"), aj);
+		AJ.notificationBar = $.ajInitNotificationBar($("#ajnotificationbar"), aj);
+		AJ.navbar = $.ajInitNavbar($("#ajnavbar"), aj);
+		AJ.progressBar=$.ajInitProgressBar($("#ajprogressbar"));
+		
+		
+	}
 
-window.onload = function() {
+	window.onload = function() {
 
-}
+	}
+</script>
+
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34013716-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+
+</html>
 
 
-//<!-- one.end -->
+<!-- one.end -->
