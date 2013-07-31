@@ -186,7 +186,7 @@
 
 					});
 
-			$('.shareButton', elem).click(function(evt) {
+			$('.ajShareButton', elem).click(function(evt) {
 				evt.preventDefault();
 
 				nj.share.show(nj.loadedNode);
